@@ -7,7 +7,7 @@ variable "resource_group_name" {
 variable "location" {
   description = "The location/region where the resources will be created."
   type        = string
-  default     = "Australia East"
+  default     = "US West"
 }
 
 variable "vm_size" {
