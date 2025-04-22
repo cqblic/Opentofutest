@@ -8,7 +8,7 @@ variable "location" {
 }
 variable "rg_name" {
   type    = string
-  default = "OHIA-CarlosQuintanar-SBOX-RG"
+  default = "cmmc-rg"
 }
 variable "vm_name" {
   type    = string
