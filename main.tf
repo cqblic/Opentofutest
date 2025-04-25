@@ -46,4 +46,18 @@ resource "azurerm_linux_virtual_machine" "main" {
     sku       = "server"
     version   = "latest"
   }
+  
+  custom_data    = base64encode(data.template_file.user-data.rendered)
+
+  tags = {
+    source = "tofu"
+    creator = "carlos@blic.llc"
+  }
+
 }
+
+# Data template Bash bootstrapping file
+data "template_file" "user-data" {
+  template = file("${path.module}/user-data.sh")
+}
+

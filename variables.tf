@@ -15,6 +15,17 @@ variable "vm_name" {
   default = "wolfApp"
 }
 
+variable "GITHUB_TOKEN" {
+  type        = string
+  description = "GitHub token for accessing private repositories"
+  default     = "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"
+}
+variable "GITHUB_USERNAME" {
+  type        = string
+  description = "GitHub username for accessing private repositories"
+  default     = "carlos@blic.llc"
+}
+
 variable "resource_group_name_prefix" {
   type        = string
   default     = "cmmc"
