@@ -27,7 +27,7 @@ sudo apt install -y nodejs
 # cmmc python script 
 su - azureuser
 cd /home/azureuser
-git clone https://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@github.com/cqblic/cmmc-python.git
+git clone https://${GITHUB_TOKEN}@github.com/cqblic/cmmc-python.git
 sudo chown -R azureuser:azureuser cmmc-python
 cd cmmc-python
 
@@ -40,7 +40,7 @@ nohup uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload &
 
 # cmmc frontend vue 
 cd /home/azureuser
-git clone https://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@github.com/cqblic/cmmc-frontend.git
+git clone https://${GITHUB_TOKEN}@github.com/cqblic/cmmc-frontend.git
 sudo chown -R azureuser:azureuser cmmc-frontend
 cd cmmc-frontend
 npm install
