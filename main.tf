@@ -53,7 +53,6 @@ resource "azurerm_linux_virtual_machine" "main" {
     source = "tofu"
     creator = "carlos@blic.llc"
   }
-
 }
 
 # Data template Bash bootstrapping file

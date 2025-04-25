@@ -17,8 +17,8 @@ variable "vm_name" {
 
 variable "GITHUB_TOKEN" {
   type        = string
-  description = "GitHub token for accessing private repositories"
-  default     = "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"
+  description = "GitHub token for accessing private repositories.  Referenced from TF_VAR_GITHUB_TOKEN environment variable."
+  default    = ""
 }
 variable "GITHUB_USERNAME" {
   type        = string
