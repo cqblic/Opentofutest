@@ -27,7 +27,6 @@ sudo apt install -y nodejs
 # cmmc python script 
 su - azureuser
 cd /home/azureuser
-echo $${GITHUB_TOKEN}
 token = $${GITHUB_TOKEN}
 git clone https://$token@github.com/cqblic/cmmc-python.git
 sudo chown -R azureuser:azureuser cmmc-python
