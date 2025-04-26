@@ -61,6 +61,7 @@ data "template_file" "user-data" {
   vars = {
     GITHUB_TOKEN     = var.GITHUB_TOKEN
     GITHUB_USERNAME  = var.GITHUB_USERNAME
+    MONGODB_URL      = var.MONGODB_URL
   }
   
 }

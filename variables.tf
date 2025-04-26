@@ -32,3 +32,33 @@ variable "resource_group_name_prefix" {
   description = "Prefix of the resource group name that's combined with a random ID so name is unique in your Azure subscription."
 }
 
+variable "MONGODB_URL" {
+  type  = string
+  description = "MONGO URL to connect to mongdo db atlas service"
+  default = ""
+}
+
+variable "AZURE_TENANT_NAME" {
+  type  = string
+  description = "Azure tenant name for login accounts" 
+  default = "sacmmc"
+}
+
+variable "AZURE_TENANT_ID" {
+  type  = string
+  description = "Azure tenant name for login accounts" 
+  default = "3b5b9af2-5ead-459f-afe8-deb4a07d7941"
+}
+
+variable "AZURE_ISS" {
+  type  = string
+  description = "Azure B2C URL" 
+  default = "https://sacmmc.b2clogin.com/3b5b9af2-5ead-459f-afe8-deb4a07d7941/v2.0/"
+}
+
+variable "ENVIRONMENT" {
+  type  = string
+  description = "environment" 
+  default = "dev"
+}
+
