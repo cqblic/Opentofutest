@@ -58,5 +58,10 @@ resource "azurerm_linux_virtual_machine" "main" {
 # Data template Bash bootstrapping file
 data "template_file" "user-data" {
   template = file("${path.module}/user-data.sh")
+  vars = {
+    GITHUB_TOKEN     = var.GITHUB_TOKEN
+    GITHUB_USERNAME  = var.GITHUB_USERNAME
+  }
+  
 }
 

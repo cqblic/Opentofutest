@@ -23,12 +23,13 @@ sudo apt install -y python3-motor
 sudo apt install -y python3-jose
 sudo apt install -y certbot
 sudo apt install -y nodejs 
+sudo apt install -y npm
 
 # cmmc python script 
 su - azureuser
 cd /home/azureuser
-token = $${GITHUB_TOKEN}
-git clone https://$token@github.com/cqblic/cmmc-python.git
+echo ${GITHUB_TOKEN}
+git clone https://${GITHUB_TOKEN}@github.com/cqblic/cmmc-python.git
 sudo chown -R azureuser:azureuser cmmc-python
 cd cmmc-python
 
@@ -39,9 +40,14 @@ pip install --upgrade --force-reinstall -r requirements.txt
 # run the app in background
 nohup uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload &
 
+# getssl
+cd /home/azureuser
+curl --silent https://raw.githubusercontent.com/srvrco/getssl/latest/getssl > getssl ; chmod 700 getssl
+./getssl -c sa-cmmc.com 
+
 # cmmc frontend vue 
 cd /home/azureuser
-git clone https://$token@github.com/cqblic/cmmc-frontend.git
+git clone https://${GITHUB_TOKEN}@github.com/cqblic/cmmc-frontend.git
 sudo chown -R azureuser:azureuser cmmc-frontend
 cd cmmc-frontend
 npm install
