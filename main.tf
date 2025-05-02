@@ -55,14 +55,29 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 }
 
+# update dns zone to use the public IP address of the VM
+resource "azurerm_dns_a_record" "record" {
+  name                = "@"
+  resource_group_name = var.dns_resource_group_name
+  zone_name           = var.dns_zone
+  ttl                 = 3600
+  records             = [azurerm_public_ip.main.ip_address]
+}
+
 # Data template Bash bootstrapping file
 data "template_file" "user-data" {
   template = file("${path.module}/user-data.sh")
   vars = {
     GITHUB_TOKEN     = var.GITHUB_TOKEN
     GITHUB_USERNAME  = var.GITHUB_USERNAME
+    private_key      = var.private_key
+    fullchain        = var.fullchain
     MONGODB_URL      = var.MONGODB_URL
+    AZURE_ISS        = var.AZURE_ISS
+    AZURE_AUD        = var.AZURE_AUD
+    AZURE_TENANT_ID  = var.AZURE_TENANT_ID
+    AZURE_TENANT_NAME = var.AZURE_TENANT_NAME
+    JWT_SECRET     = var.JWT_SECRET
   }
-  
 }
 
