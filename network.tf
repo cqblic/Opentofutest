@@ -18,16 +18,63 @@ resource "azurerm_network_security_group" "main" {
   resource_group_name = azurerm_resource_group.rg.name
   
   security_rule {
-    name                       = "allow-ssh"
-    priority                   = 1000
+    name                       = "HTTPS"
+    priority                   = 100
     direction                  = "Inbound"
-    access                    = "Allow"
-    protocol                  = "Tcp"
-    source_port_range         = "*"
-    destination_port_range     = 22
-    source_address_prefix     = "*"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+
+  security_rule {
+    name                       = "HTTP"
+    priority                   = 200
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "SSH"
+    priority                   = 300
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+    security_rule {
+    name                       = "CMMC-PYTHON"
+    priority                   = 400
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "8000"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+    security_rule {
+    name                       = "CMMC-VUE"
+    priority                   = 500
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "3000"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+  
 }
 
 # Create public IPs
